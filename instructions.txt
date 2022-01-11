@@ -1,0 +1,10 @@
+chmod +x test.py
+
+ nohup python /home/pi/Documents/azanProject/azanSchedular/azanSchedular.py &
+ps ax | grep azanSchedular.py
+kill PID
+pkill -f azanSchedular.py
+pkill -9 -f azanSchedular.py
+nvlc azan.mp3
+ https://www.raspberrypi-spy.co.uk/2019/06/using-a-usb-audio-device-with-the-raspberry-pi/
+ 

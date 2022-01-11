@@ -1,0 +1,1 @@
+{"Asr": "14:11", "Maghrib": "16:30", "Midnight": "23:52", "Fajr": "06:07", "Sunset": "16:30", "Sunrise": "07:14", "Imsak": "05:57", "Dhuhr": "11:52", "Isha": "17:37"}

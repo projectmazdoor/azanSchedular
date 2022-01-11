@@ -1,5 +1,6 @@
 from datetime import datetime
-
+from playsound import playsound
+import pygame
 import schedule
 import time
 import requests
@@ -41,7 +42,13 @@ def getAzanApi():
             isha = json_data["data"]['timings']['Isha']
             print("Fajar %s Zuhar %s Asar %s Maghrib %s Isha %s" % (fajar, zuhar, asar, magrib, isha))
             # working
-            # webbrowser.open("azan.mp3")
+            #webbrowser.open("azan.mp3")
+	    #wavFile = input("azan.mp3")
+            # Play the wav file
+            #playsound(wavFile)
+	    pygame.mixer.init()
+	    pygame.mixer.music.load("azan.mp3")
+	    pygame.mixer.music.play()	    
     elif response.status_code == 404:
         print('Not Found.')
     print("------------", )
@@ -64,8 +71,11 @@ def getAzanApi():
 
 def playAzan():
     print("playAzan")
+    pygame.mixer.init()
+    pygame.mixer.music.load("azan.mp3")
+    pygame.mixer.music.play()
     # working
-    webbrowser.open("azan.mp3")
+    # webbrowser.open("azan.mp3")
 
 def job3():
     print("Hello")
