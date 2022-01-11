@@ -53,12 +53,13 @@ def getAzanApi():
             print("Fajar %s Zuhar %s Asar %s Maghrib %s Isha %s" % (fajar, zuhar, asar, magrib, isha))
             logging.debug("Fajar %s Zuhar %s Asar %s Maghrib %s Isha %s" % (fajar, zuhar, asar, magrib, isha))
 
-            # working
+            # working in window but not in linux
             # webbrowser.open("azan.mp3")
             # wavFile = input("azan.mp3")
-            pygame.mixer.init()
-            pygame.mixer.music.load("azan.mp3")
-            pygame.mixer.music.play()
+            # working in both window and linux
+            # pygame.mixer.init()
+            # pygame.mixer.music.load("azan.mp3")
+            # pygame.mixer.music.play()
     elif response.status_code == 404:
         print('Not Found.')
         logging.debug('Not Found.')
@@ -89,6 +90,7 @@ def playAzan():
     pygame.mixer.init()
     pygame.mixer.music.load("azan.mp3")
     pygame.mixer.music.play()
+    return schedule.CancelJob
     # working
     # webbrowser.open("azan.mp3")
 
