@@ -53,6 +53,20 @@ def getAzanApi():
             print("Fajar %s Zuhar %s Asar %s Maghrib %s Isha %s" % (fajar, zuhar, asar, magrib, isha))
             logging.debug("Fajar %s Zuhar %s Asar %s Maghrib %s Isha %s" % (fajar, zuhar, asar, magrib, isha))
 
+            # play azan for fajar
+            schedule.every().day.at(str(fajar)).do(playAzan)
+
+            # play azan for zuhar
+            schedule.every().day.at(str(zuhar)).do(playAzan)
+
+            # play azan for asar
+            schedule.every().day.at(str(asar)).do(playAzan)
+
+            # play azan for maghrib
+            schedule.every().day.at(str(magrib)).do(playAzan)
+
+            # play azan for isha
+            schedule.every().day.at(str(isha)).do(playAzan)
             # working in window but not in linux
             # webbrowser.open("azan.mp3")
             # wavFile = input("azan.mp3")
@@ -66,21 +80,8 @@ def getAzanApi():
 
     print("------------", )
     logging.debug("------------")
+    return
 
-    # play azan for fajar
-    schedule.every().day.at(str(fajar)).do(playAzan)
-
-    # play azan for zuhar
-    schedule.every().day.at(str(zuhar)).do(playAzan)
-
-    # play azan for asar
-    schedule.every().day.at(str(asar)).do(playAzan)
-
-    # play azan for maghrib
-    schedule.every().day.at(str(magrib)).do(playAzan)
-
-    # play azan for isha
-    schedule.every().day.at(str(isha)).do(playAzan)
 
 
 def playAzan():
@@ -94,13 +95,11 @@ def playAzan():
     # working
     # webbrowser.open("azan.mp3")
 
-
-def job3():
-    print("Hello")
-
-
 # this job runs once a day for latest time of azan
 schedule.every().day.at("07:28").do(getAzanApi)
+
+
+
 
 # schedule.every().hour.do(job)
 # schedule.every().day.at("12:25").do(job)
