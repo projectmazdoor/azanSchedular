@@ -74,6 +74,9 @@ def getAzanApi():
             # pygame.mixer.init()
             # pygame.mixer.music.load("azan.mp3")
             # pygame.mixer.music.play()
+            # time.sleep(240)
+            # pygame.quit()
+
     elif response.status_code == 404:
         print('Not Found.')
         logging.debug('Not Found.')
@@ -91,12 +94,14 @@ def playAzan():
     pygame.mixer.init()
     pygame.mixer.music.load("azan.mp3")
     pygame.mixer.music.play()
+    time.sleep(240)
+    pygame.quit()
     return schedule.CancelJob
     # working
     # webbrowser.open("azan.mp3")
 
 # this job runs once a day for latest time of azan
-schedule.every().day.at("07:28").do(getAzanApi)
+schedule.every().day.at("19:11").do(getAzanApi)
 
 
 
