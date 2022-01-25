@@ -8,3 +8,34 @@ pkill -9 -f azanSchedular.py
 nvlc azan.mp3
  https://www.raspberrypi-spy.co.uk/2019/06/using-a-usb-audio-device-with-the-raspberry-pi/
  
+AZAN
+pi
+raspberry
+
+ Enable audio (loads snd_bcm2835)
+
+ 
+ 
+ alsamixer
+ 
+ https://www.raspberrypi-spy.co.uk/2019/06/using-a-usb-audio-device-with-the-raspberry-pi/
+ 
+ 
+ 
+ 
+ nohup python /home/pi/Documents/azanProject/azanSchedular/azanSchedular.py &
+ 
+ chmod +x test.py
+
+ nohup python /home/pi/Documents/azanProject/azanSchedular/azanSchedular.py &
+ps ax | grep azanSchedular.py
+kill PID
+pkill -f azanSchedular.py
+pkill -9 -f azanSchedular.py
+nvlc azan.mp3
+ https://www.raspberrypi-spy.co.uk/2019/06/using-a-usb-audio-device-with-the-$
+
+ projectmazdoor.com
+https://stackoverflow.com/questions/2975624/how-to-run-a-python-script-in-the-background-even-after-i-logout-ssh
+ 
+ 

@@ -101,7 +101,7 @@ def playAzan():
     # webbrowser.open("azan.mp3")
 
 # this job runs once a day for latest time of azan
-schedule.every().day.at("19:11").do(getAzanApi)
+schedule.every().day.at("19:25").do(getAzanApi)
 
 
 
