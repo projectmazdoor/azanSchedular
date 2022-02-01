@@ -21,10 +21,14 @@ isha = '00:15'
 
 # this job runs once a day for latest time of azan
 def getAzanApi():
+
     logging.basicConfig(filename='app.log',
                         level=logging.DEBUG)
     print("----getAzanApi-----", )
     logging.debug('----getAzanApi-----')
+
+    logging.debug('----Clearing all jobs-----')
+    schedule.clear()
 
     now = datetime.now()
     current_time = now.strftime("%H:%M")
@@ -83,7 +87,7 @@ def getAzanApi():
 
     print("------------", )
     logging.debug("------------")
-    return
+    return schedule.CancelJob
 
 
 
@@ -94,15 +98,15 @@ def playAzan():
     pygame.mixer.init()
     pygame.mixer.music.load("azan.mp3")
     pygame.mixer.music.play()
-    time.sleep(240)
-    pygame.quit()
+    # time.sleep(5)
+    # pygame.quit()
     return schedule.CancelJob
     # working
     # webbrowser.open("azan.mp3")
 
 # this job runs once a day for latest time of azan
-schedule.every().day.at("19:25").do(getAzanApi)
-
+# schedule.clear()
+schedule.every().day.at("19:55").do(getAzanApi)
 
 
 
