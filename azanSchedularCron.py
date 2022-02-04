@@ -5,7 +5,6 @@ import schedule
 import time
 import requests
 import json
-import webbrowser
 
 headers = {
     "User-Agent": "Mozilla/5.0 (X11; CrOS x86_64 12871.102.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.141 Safari/537.36"}
@@ -18,21 +17,31 @@ asar = '00:13'
 magrib = '00:14'
 isha = '00:15'
 
-
-# this job runs once a day for latest time of azan
-def getAzanApi():
-    logging.basicConfig(filename='app.log',
+logging.basicConfig(filename='app.log',
                         level=logging.DEBUG)
-    print("----getAzanApi-----", )
-    logging.debug('----getAzanApi-----')
 
-    now = datetime.now()
-    current_time = now.strftime("%H:%M")
-    print("Current Time =", current_time)
-    logging.debug("Current Time ="+ current_time)
-    print('Azan Time Api Scheduled NOW !')
-    logging.debug('Azan Time Api Scheduled NOW !')
-    if response.status_code == 200:
+def playAzan():
+    print("playAzan")
+    logging.debug("playAzan")
+
+    pygame.mixer.init()
+    pygame.mixer.music.load("azan.mp3")
+    pygame.mixer.music.play()
+    return schedule.CancelJob
+    # working
+    # webbrowser.open("azan.mp3")
+
+
+print("----getAzanApi-----", )
+logging.debug('----getAzanApi-----')
+
+now = datetime.now()
+current_time = now.strftime("%H:%M")
+print("Current Time =", current_time)
+logging.debug("Current Time ="+ current_time)
+print('Azan Time Api Scheduled NOW !')
+logging.debug('Azan Time Api Scheduled NOW !')
+if response.status_code == 200:
         print('Success!')
         logging.debug('Success!')
 
@@ -74,40 +83,13 @@ def getAzanApi():
             # pygame.mixer.init()
             # pygame.mixer.music.load("azan.mp3")
             # pygame.mixer.music.play()
-    elif response.status_code == 404:
-        print('Not Found.')
-        logging.debug('Not Found.')
+elif response.status_code == 404:
+    print('Not Found.')
+    logging.debug('Not Found.')
 
-    print("------------", )
-    logging.debug("------------")
-    return
+print("------------", )
+logging.debug("------------")
 
-
-
-def playAzan():
-    print("playAzan")
-    logging.debug("playAzan")
-
-    pygame.mixer.init()
-    pygame.mixer.music.load("azan.mp3")
-    pygame.mixer.music.play()
-    return schedule.CancelJob
-    # working
-    # webbrowser.open("azan.mp3")
-
-# this job runs once a day for latest time of azan
-schedule.every().day.at("07:28").do(getAzanApi)
-
-
-
-
-# schedule.every().hour.do(job)
-# schedule.every().day.at("12:25").do(job)
-# schedule.every(5).to(10).minutes.do(job)
-# schedule.every().thursday.at("19:15").do(job)
-# schedule.every().wednesday.at("13:15").do(job)
-# schedule.every().minute.at(":17").do(job)
-# schedule.every(2).seconds.do(job2)
 
 while True:
     schedule.run_pending()
