@@ -1,0 +1,11 @@
+crontab -e
+ 
+ 
+ 53 22 * * * /usr/bin/python  /home/pi/Documents/cronjob/azanScheduleCron.py >> cron.log 2>&1
+ 
+ 
+ /home/pi/Documents/cronjob
+ 
+ 
+ /home/pi/Documents/cronjob/azanScheduleCron.py
+ 
